@@ -29,11 +29,13 @@ public class Game {
     private ArrayList<String> wordlist;  // list of words
     
     public Game() {
-        word="computer";
-        createDisplayWord();
-        state=1;
         wordlist=null;
         generator = new Random();
+        word = randomWord(); 
+        System.out.println(word);
+        createDisplayWord();
+        state=1;
+        
     }
     
     public int getState(){
@@ -50,7 +52,7 @@ public class Game {
     
     public void startNewGame() {
         state = 1;
-        word = "computer";
+        word = randomWord();
         createDisplayWord();
         
     }
@@ -116,7 +118,7 @@ public class Game {
      * 
      * @return a word from the list
      */
-    private String randomWord() {
+    public String randomWord() {
 	try {
             if (wordlist == null) {
 		wordlist = new ArrayList<String>();
