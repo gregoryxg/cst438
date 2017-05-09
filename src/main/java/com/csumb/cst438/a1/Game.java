@@ -118,7 +118,7 @@ public class Game {
      * 
      * @return a word from the list
      */
-    public String randomWord() {
+    private String randomWord() {
 	try {
             if (wordlist == null) {
 		wordlist = new ArrayList<String>();
