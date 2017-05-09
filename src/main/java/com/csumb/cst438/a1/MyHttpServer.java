@@ -7,7 +7,7 @@ import java.io.*;
 public class MyHttpServer {
 
 	static final String RESOURCE_DIR = "src/main/resources/";
-	static final int PORT = 8080;
+	static final int PORT = 8081;
         static Random generator = new Random();
 
 	public static void main(String[] args) {
@@ -57,11 +57,12 @@ public class MyHttpServer {
                                             + "<img src=\"" + "h" + game.getState() + ".gif" + "\">"
                                             + "<h2 style=\"font-family:'Lucida Console', monospace\"> " + game.getDisplayWord() + "</h2>"
                                             + "<form action=\"/\" method=\"get\"> "
-                                            + "Guess a character <input type=\"text\" name=\"guess\"><br>"
+                                            + "Guess a character <input type=\"text\" name=\"guess\" pattern=\"[A-Za-z]{1}\"><br>"
                                             + "<input type=\"submit\" value=\"Submit\">" + "</form></body></html>";
                                 } else {
                                     // continue with current game
                                     char ch = uri.charAt(uri.length()-1);  // letter that user has guessed
+                                    ch = Character.toLowerCase(ch);
                                     int result = game.playGame(ch);
                                     switch(result) {
                                         case 0: // good guess, continue game
@@ -69,7 +70,7 @@ public class MyHttpServer {
                                             + "<img src=\"" + "h" + game.getState() + ".gif" + "\">"
                                             + "<h2 style=\"font-family:'Lucida Console', monospace\"> " + game.getDisplayWord() + "</h2>"
                                             + "<form action=\"/\" method=\"get\"> "
-                                            + "Guess a character <input type=\"text\" name=\"guess\"><br>"
+                                            + "Guess a character <input type=\"text\" name=\"guess\" pattern=\"[A-Za-z]{1}\"><br>"
                                             + "<input type=\"submit\" value=\"Submit\">" + "</form></body></html>";
                                             break;
                                         case 1: // good guess, win game
@@ -84,7 +85,7 @@ public class MyHttpServer {
                                             + "<img src=\"" + "h" + game.getState() + ".gif" + "\">"
                                             + "<h2 style=\"font-family:'Lucida Console', monospace\"> " + game.getDisplayWord() + "</h2>"
                                             + "<form action=\"/\" method=\"get\"> "
-                                            + "Guess a character <input type=\"text\" name=\"guess\"><br>"
+                                            + "Guess a character <input type=\"text\" name=\"guess\" pattern=\"[A-Za-z]{1}\"><br>"
                                             + "<input type=\"submit\" value=\"Submit\">" + "</form></body></html>";
                                             break;
                                         case 3: // bad guess, lost game
