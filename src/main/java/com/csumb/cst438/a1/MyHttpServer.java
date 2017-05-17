@@ -37,6 +37,11 @@ public class MyHttpServer {
                  * @param t
                  * @throws IOException 
                  */
+                public Game getGame()
+                {
+                    return game;
+                }
+                
 		public void handle(HttpExchange t) throws IOException {
 			String uri = t.getRequestURI().toString();
 			System.out.println("URI=" + uri);

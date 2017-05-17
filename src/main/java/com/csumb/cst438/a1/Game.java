@@ -138,4 +138,51 @@ public class Game {
             return null; // to keep compiler happy
 	}
     }
+    
+    //Returns a random character in word
+    public char getCharInWord()
+    {
+        try {
+            int pos = generator.nextInt(word.length());
+            return word.charAt(pos);
+        } catch (Exception e)
+        {
+            System.out.println("Error...could not return char in word...");
+            System.exit(0);
+            return ' ';
+        }
+    }
+    
+    //Returns a random lowercase letter not in word if boolean getLowercase is true
+    //If boolean getLowercase is false, a random uppercase letter not in word is returned
+    public char getCharNotInWord(boolean getLowercase)
+    {
+        try {
+            Random r = new Random();
+            char c = (char)(r.nextInt(26) + 'a');
+            char lowerC = c;
+            Character.toUpperCase(c);
+            if (word.indexOf(lowerC) > -1 || word.indexOf(c) > -1)
+            {
+                return getCharNotInWord(getLowercase);
+            }
+            else
+            {
+                if (getLowercase)
+                {
+                    return lowerC;
+                }
+                else
+                {
+                    return c;
+                }
+                
+            }
+        } catch (Exception e)
+        {
+            System.out.println("Unexpected error in getCharNotInWord");
+            System.exit(0);
+            return ' ';
+        }
+    }
 }

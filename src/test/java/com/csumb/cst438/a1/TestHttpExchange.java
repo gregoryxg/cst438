@@ -18,9 +18,10 @@ import com.sun.net.httpserver.HttpPrincipal;
  * 
  * Example:  starting a new game 
  * 
+ * Game instance = new Game();
  * final String expectedBody = "<!DOCTYPE html><html><head><title>MyHttpServer</title></head>"+
  *    "<body><h2>Hangman</h2><img src=\"h1.gif\"><h2 style=\"font-family:'Lucida Console', monospace\">"+
- *    *    " _ _ _ _ _ </h2><form action=\"/\" method=\"get\">  Guess a character <input type=\"text\" name=\"guess\">"+
+ *    instance.getDisplayWord() + "</h2><form action=\"/\" method=\"get\">  Guess a character <input type=\"text\" name=\"guess\">"+
  *    "<br><input type=\"submit\" value=\"Submit\"></form></body></html>";
  * 
  * Headers header = new Headers();
